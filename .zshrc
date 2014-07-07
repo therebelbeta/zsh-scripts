@@ -51,7 +51,7 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git nvm bower colorize command-not-found comman-aliases docker gem git-flow git-hubflow gitignore )
+plugins=(git nvm rvm bower colorize command-not-found comman-aliases docker gem git-flow git-hubflow gitignore )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,7 +113,9 @@ alias sb='git sb'
 alias commit='git commit -a'
 alias killnginx='sudo /etc/init.d/nginx stop && sudo /etc/init.d/apache2 start && sudo /etc/init.d/dnsmasq restart'
 alias killapache='sudo /etc/init.d/apache2 stop && sudo /etc/init.d/nginx start && sudo /etc/init.d/dnsmasq restart'
-installnodejs()  { sudo apt-get install git curl build-essential libssl-dev; installnvm.sh; reload; nvm install 0.10; nvm use 0.10;}
+installruby()  { \curl -sSL https://get.rvm.io | bash -s stable --ruby; reload; rvm --default use 2.1.2; }
+installgems() { gem install sass compass bundler; }
+installnodejs()  { sudo apt-get install git curl build-essential libssl-dev; installnvm.sh; reload; nvm install 0.11; nvm --default use 0.11; }
 installnodemods() { npm install gulp -g; npm install grunt-cli -g; npm install bower -g; npm install yeoman -g; npm install nodemon -g; npm install spot -g; }
 installsublime() { sudo add-apt-repository ppa:webupd8team/sublime-text-3;	sudo apt-get update; sudo apt-get install sublime-text-installer; }
 installlamp() { sudo apt-get install tasksel; sudo tasksel install lamp-server; }

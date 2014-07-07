@@ -114,7 +114,7 @@ alias commit='git commit -a'
 alias killnginx='sudo /etc/init.d/nginx stop && sudo /etc/init.d/apache2 start && sudo /etc/init.d/dnsmasq restart'
 alias killapache='sudo /etc/init.d/apache2 stop && sudo /etc/init.d/nginx start && sudo /etc/init.d/dnsmasq restart'
 installnodejs()  { sudo apt-get install git curl build-essential libssl-dev; installnvm.sh; reload; nvm install 0.10; nvm use 0.10;}
-installnodemods() { npm install gulp -g; npm install bower -g; npm install yeoman -g; npm install nodemon -g; npm install spot -g; }
+installnodemods() { npm install gulp -g; npm install grunt-cli -g; npm install bower -g; npm install yeoman -g; npm install nodemon -g; npm install spot -g; }
 installsublime() { sudo add-apt-repository ppa:webupd8team/sublime-text-3;	sudo apt-get update; sudo apt-get install sublime-text-installer; }
 installlamp() { sudo apt-get install tasksel; sudo tasksel install lamp-server; }
 installnginx() { sudo add-apt-repository ppa:nginx/stable; sudo apt-get update; sudo apt-get install nginx; }
@@ -138,4 +138,7 @@ configzsh() {
 
 if [ -f ~/.zsh_ssh ]; then
       source ~/.zsh_ssh
+fi
+if [ -d "$HOME/Apps" ] ; then
+  PATH="$HOME/Apps:$PATH"
 fi

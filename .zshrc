@@ -116,7 +116,7 @@ alias killapache='sudo /etc/init.d/apache2 stop && sudo /etc/init.d/nginx start 
 installruby()  { \curl -sSL https://get.rvm.io | bash -s stable --ruby; reload; rvm --default use 2.1.2; }
 installgems() { gem install sass compass bundler; }
 installnodejs()  { sudo apt-get install git curl build-essential libssl-dev; installnvm.sh; reload; nvm install 0.11; nvm --default use 0.11; }
-installnodemods() { npm install gulp -g; npm install bower -g; npm install yeoman -g; npm install nodemon -g; npm install spot -g; }
+installnodemods() { npm install gulp -g; npm install grunt-cli -g; npm install bower -g; npm install yeoman -g; npm install nodemon -g; npm install spot -g; }
 installsublime() { sudo add-apt-repository ppa:webupd8team/sublime-text-3;	sudo apt-get update; sudo apt-get install sublime-text-installer; }
 installlamp() { sudo apt-get install tasksel; sudo tasksel install lamp-server; }
 installnginx() { sudo add-apt-repository ppa:nginx/stable; sudo apt-get update; sudo apt-get install nginx; }
@@ -149,3 +149,6 @@ if [ -f ~/.zsh_ssh ]; then
 fi
 
 export PATH=$HOME/bin/scripts:$PATH
+if [ -d "$HOME/Apps" ] ; then
+  export PATH="$HOME/Apps:$PATH"
+fi

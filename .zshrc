@@ -137,7 +137,15 @@ configzsh() {
 	fi
 	echo "copy complete. Please reload your prompt."
 }
+ngensite(){
+	sudo ln -s /etc/nginx/sites-available/"$@".conf /etc/nginx/sites-enabled/"$@".conf
+}
+ngdissite(){
+	sudo unlink /etc/nginx/sites-enabled/"$@".conf
+}
 
 if [ -f ~/.zsh_ssh ]; then
       source ~/.zsh_ssh
 fi
+
+export PATH=$HOME/bin/scripts:$PATH

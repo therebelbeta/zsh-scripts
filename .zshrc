@@ -138,10 +138,24 @@ configzsh() {
 	echo "copy complete. Please reload your prompt."
 }
 ngensite(){
-	sudo ln -s /etc/nginx/sites-available/"$@".conf /etc/nginx/sites-enabled/"$@".conf
+	sudo ln -s /etc/nginx/sites-available/"$@" /etc/nginx/sites-enabled/"$@"
 }
 ngdissite(){
-	sudo unlink /etc/nginx/sites-enabled/"$@".conf
+	sudo unlink /etc/nginx/sites-enabled/"$@"
+}
+installgoogledrive() {
+	sudo add-apt-repository ppa:alessandro-strada/ppa; 
+	sudo apt-get update; 
+	sudo apt-get install google-drive-ocamlfuse;
+	google-drive-ocamlfuse;
+	mkdir ~/Google;
+	google-drive-ocamlfuse ~/Google;
+}
+alias googledrive='google-drive-ocamlfuse ~/Google'
+installgo() {
+	bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer);
+	reload;
+	gvm install go1;
 }
 
 if [ -f ~/.zsh_ssh ]; then
@@ -152,3 +166,7 @@ export PATH=$HOME/bin/scripts:$PATH
 if [ -d "$HOME/Apps" ] ; then
   export PATH="$HOME/Apps:$PATH"
 fi
+if [ -d "$HOME/.gvm/bin" ] ; then
+  export PATH="$HOME/.gvm/bin:$PATH"
+fi
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"

@@ -43,7 +43,7 @@ fi
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to the command execution time stamp shown 
+# Uncomment following line if you want to the command execution time stamp shown
 # in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
@@ -113,6 +113,7 @@ alias sb='git sb'
 alias commit='git commit -a'
 alias killnginx='sudo /etc/init.d/nginx stop && sudo /etc/init.d/apache2 start && sudo /etc/init.d/dnsmasq restart'
 alias killapache='sudo /etc/init.d/apache2 stop && sudo /etc/init.d/nginx start && sudo /etc/init.d/dnsmasq restart'
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 installruby()  { \curl -sSL https://get.rvm.io | bash -s stable --ruby; reload; rvm --default use 2.1.2; }
 installgems() { gem install sass compass bundler; }
 installnodejs()  { sudo apt-get install git curl build-essential libssl-dev; curl https://raw.githubusercontent.com/creationix/nvm/v0.13.0/install.sh | bash; reload; nvm install 0.10; nvm use 0.10 --default; }
@@ -144,8 +145,8 @@ ngdissite(){
 	sudo unlink /etc/nginx/sites-enabled/"$@"
 }
 installgoogledrive() {
-	sudo add-apt-repository ppa:alessandro-strada/ppa; 
-	sudo apt-get update; 
+	sudo add-apt-repository ppa:alessandro-strada/ppa;
+	sudo apt-get update;
 	sudo apt-get install google-drive-ocamlfuse;
 	google-drive-ocamlfuse;
 	mkdir ~/Google;

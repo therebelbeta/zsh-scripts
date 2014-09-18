@@ -117,7 +117,7 @@ alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 installruby()  { \curl -sSL https://get.rvm.io | bash -s stable --ruby; reload; rvm --default use 2.1.2; }
 installgems() { gem install sass compass bundler; }
 installnodejs()  { sudo apt-get install git curl build-essential libssl-dev; curl https://raw.githubusercontent.com/creationix/nvm/v0.13.0/install.sh | bash; reload; nvm install 0.10; nvm use 0.10 --default; }
-installnodemods() { npm install gulp -g; npm install grunt-cli -g; npm install bower -g; npm install yeoman -g; npm install nodemon -g; npm install slush -g; }
+installnodemods() { npm install gulp -g; npm install grunt-cli -g; npm install bower -g; npm install yeoman -g; npm install nodemon -g; npm install slush -g; npm install slap -g; }
 installsublime() { sudo add-apt-repository ppa:webupd8team/sublime-text-3;	sudo apt-get update; sudo apt-get install sublime-text-installer; }
 installlamp() { sudo apt-get install tasksel; sudo tasksel install lamp-server; }
 installnginx() { sudo add-apt-repository ppa:nginx/stable; sudo apt-get update; sudo apt-get install nginx; }
@@ -158,7 +158,18 @@ installgo() {
 	reload;
 	gvm install go1;
 }
-
+installpassenger() {
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+  sudo apt-get install apt-transport-https ca-certificates
+  echo "deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main" > tmp.passenger.src
+  sudo mv tmp.passenger.src /etc/apt/sources.list.d/passenger.list
+  rm -rf tmp.passenger.src
+  sudo chown root: /etc/apt/sources.list.d/passenger.list
+  sudo chmod 600 /etc/apt/sources.list.d/passenger.list
+  sudo apt-get update
+  sudo apt-get install nginx-extras passenger
+  echo "Edit /etc/nginx/nginx.conf and uncomment passenger_root and passenger_ruby, then restart nginx."
+}
 if [ -f ~/.zsh_ssh ]; then
       source ~/.zsh_ssh
 fi

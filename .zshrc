@@ -6,11 +6,11 @@ ZSH=~/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 
-if [[ -n $SSH_CONNECTION ]]; then
-  ZSH_THEME="norm"
-else
+# if [[ -n $SSH_CONNECTION ]]; then
+#   ZSH_THEME="norm"
+# else
   ZSH_THEME="duellj"
-fi
+# fi
 # MIX DUELLJ and BUREAU
 
 # Example aliases

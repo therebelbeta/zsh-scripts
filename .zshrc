@@ -174,7 +174,7 @@ if [ -f ~/.zsh_ssh ]; then
       source ~/.zsh_ssh
 fi
 
-export PATH=$HOME/bin/scripts:$PATH
+export PATH=$HOME/.exercism:$HOME/Apps:$HOME/bin/scripts:$PATH
 if [ -d "$HOME/Apps" ] ; then
   export PATH="$HOME/Apps:$PATH"
 fi
@@ -182,3 +182,22 @@ if [ -d "$HOME/.gvm/bin" ] ; then
   export PATH="$HOME/.gvm/bin:$PATH"
 fi
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+createinallfolders() {
+  for d in ./*/ ; do
+    echo "$d $@"
+    touch "$d$@"
+  done
+}
+renameinallfolders() {
+  for d in ./*/ ; do
+    echo "$d $1 $2"
+    mv "$d$1" "$d$2"
+  done
+}
+deleteinallfolders() {
+  for d in ./*/ ; do
+    echo "$d$@"
+    rm -rf "$d$@"
+  done
+}

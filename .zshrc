@@ -201,3 +201,4 @@ deleteinallfolders() {
     rm -rf "$d$@"
   done
 }
+alias goga="cd $HOME/git/grow/grow-app"

@@ -174,7 +174,7 @@ if [ -f ~/.zsh_ssh ]; then
       source ~/.zsh_ssh
 fi
 
-export PATH=$HOME/.exercism:$HOME/Apps:$HOME/bin/scripts:$PATH
+export PATH=$HOME/bin/scripts:$PATH
 if [ -d "$HOME/Apps" ] ; then
   export PATH="$HOME/Apps:$PATH"
 fi
@@ -183,10 +183,19 @@ if [ -d "$HOME/.gvm/bin" ] ; then
 fi
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
+[[ -s /home/therebelrobot/.rsvm/rsvm.sh ]] && . /home/therebelrobot/.rsvm/rsvm.sh # This loads RSVM
+
+
 createinallfolders() {
   for d in ./*/ ; do
     echo "$d $@"
     touch "$d$@"
+  done
+}
+createfolderinallfolders() {
+  for d in ./*/ ; do
+    echo "$d $@"
+    mkdir "$d$@"
   done
 }
 renameinallfolders() {
@@ -202,3 +211,8 @@ deleteinallfolders() {
   done
 }
 alias goga="cd $HOME/git/grow/grow-app"
+alias goio="cd $HOME/git/personal/iojs-website/"
+
+replaceInFiles(){
+  find . -type f -print0 | xargs -0 sed -i "s/$1/$2/g"
+}
